@@ -1,0 +1,18 @@
+git stash can be included with function as well:
+git stash save "message"
+
+if another change made and again stashing done, than we have multiple stashes:
+git stash save "new message"
+
+How to list all the stashes:
+git stash list
+
+Now suppose we dont want a particular stash:
+git stash drop <stash name>
+
+To drop all the stashes:
+git stash clear
+=================================================================
+Git stash is very much useful when you don't want to commit as you are not done with your work and want to resume back the next day.
+So you simply stash/save your work so that you can resume that next day.
+And also if you don't stash, your work will be visible to other branches as well creating a confusion and not allowing any rebase of merge in other branches.

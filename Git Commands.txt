@@ -1,0 +1,81 @@
+git init :  to initialize git repository
+git status : to see status of files in git repo
+git add . : track all files in directory
+git add <filename> : for tracking single file or multiple files whose name mentioned.
+git commit -m "message"  : to commit the files.
+Now add one new file and change one existing file and do git status to see one untracked and one modiefied file.
+git config --global --unset credential.helper
+------------------------------------------------------------------------------------
+But first : 
+mkdir devops
+cd devops
+nano 1.txt
+nano 2.txt
+git init
+git pull origin master --allow-unrelated-histories
+1.git init
+2.git config user.name "sunnysingh1302"
+3.git config user.email "sunny_crazy1432000@yahoo.com"
+4.git add *
+5.git commit -m "some init msg"
+------------------------------------------------------------------------------------
+git remote add origin "https://github.com/sunnysingh1302/devops-demo1.git" :  to get ready to sync files to remote repo.This command adds remote repo to command line as in to tell git that what is the origin of that repository in which are currently working.
+git push -u origin master : sync to remote repo, to push the files to our remote repo.
+
+git clone repolink : to clone a particular repo, beauty is here u need not add repo seperately to command line, it already knows where to add new files when pushed for sync.
+on hold.
+git pull origin master : make sure to run this before starting to work on any code to make sure your local repo is in sync with remote repo.
+----------------------------------------------------------------------------------------------------------------------------------------------
+Parallel Development
+--------------------
+git branch <name of the branch> :  to create a new branch.
+git branch : to list all branches.
+git checkout <branch name> : to switch to another branch.
+do all the changes , create files in feature branch and then do push as shown below--
+git push origin feature1 :  to push the feature1 branch to remote repo.
+nano text1.txt : to add a txt file.
+Ctrl+X : for exiting from VIM editor.
+git log : to check every commit details in your repository.Here you get to see all the commit IDs which can help you to revert back to that commit.
+git revert <commitID> : revert back to commitID
+-------------------------------------------------------------------------------------------
+git stash : Now suppose when you are working in one branch and just want to move to different branch without committing and come back later, then this command helps.
+create a file in feature1, checkout to master without staging that file and do ls, file is visible in master which should not happen. So:
+go back to feature1
+do : git stash
+checkout to master
+ls : now new file of feature1 is not visible.
+checkout to feature1
+git stash pop to get back to point where you were working.
+git stash pop : to go back to previous branch where you were working earlier.
+-------------------------------------------------------------------------------
+Process :
+1. Create a file in feature1 branch.
+2. Now checkout to master, here you will see the recently created file despite of adding it to master which you donot want to happen.
+3. Even after staging the file in feature , it will be visible in master branch creating whole lot of confusion.
+4. To avoid it, first we add the file to staging area and then we do git stash from feature1 and then do checkout to master branch and now file will not be visible. So no confusion.
+
+git checkout <commitID> : to see what all changes were done in that commitID. By doing this we are in stashed commit.
+git checkout feature1 from here takes you back to latest commit on feature1 branch.
+------------------------------------------------------------------------------
+git log --graph --pretty=oneline
+------------------------------------------------------------------------------
+now when done with feature branch:
+git merge feature --> from master branch to merge the changes with master.
+===========================================================================
+git branch feature1
+git checkout feature1
+nano 3.txt
+git checkout master
+git checkout feature1
+git add .
+git checkout master
+git checkout feature1
+git stash -u
+git checkout master
+ls
+git checkout feature1
+git stash pop
+git commit -m "stash committed"
+git checkout master
+git merge feature1
+git revert <commitid>

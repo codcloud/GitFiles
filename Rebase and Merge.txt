@@ -1,0 +1,36 @@
+Advanced Git:
+---------------
+Two strategies :
+1. Git Merge : It deals with remote branch/master branch.We use this for the branch which is also in remote repository.
+Handson Steps :
+----------------
+	a. Create a directory.
+	b. git init
+	c. Create files in it two in number.
+	d. Commit themone by one.
+	e. Now create branch say test.
+	f. Create two new file in that branch.
+	g. Commit  them one by one.
+	h. create fifth file on master and commit it.
+	i. Now do "Git merge test":to merge test to master.
+	j. git log --graph --pretty=oneline and now see the beauty, you get to see the entire graph of commits history.
+	Beauty of Git merge is, it doesnot change the history of commits. Enables easy tracking of changes.
+
+2. Git Rebase : Git rebase is use to merge something to local branch.Here history changes.So we never do this on master branch as we need complete history in master branch without wiping anything.It will only show a linear log rather then like we saw in git merge with all commit details.
+Handson Steps:
+--------------
+	a. Create a direc named rebase test.
+	b. git init.
+	c. create a file and commit it in master.
+	d. create a branch named test.
+	e. create a file in test branch and commit it the first in test.
+	f. go to master and create a file there and commit it.
+	g. go back to test branch and check logs to see the commit history.
+	h. now do git rebase to get this new committed file in test branch.
+	i. git log --graph --pretty=oneline , now you get to see a very linear history rather than the one we saw
+	   merge.
+	j. commit another file in test branch which will be second commit.
+	h. push it to master now (git merge test)
+	i. Now see the graph: git log --graph --pretty=oneline
+	j. now see the difference.
+	Remember, always do git rebase on local branch and git merge on remote branch.
